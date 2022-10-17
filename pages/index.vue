@@ -1,9 +1,9 @@
 <template>
-  <span>記事一覧</span>
+  <span>デフォルトページ</span>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'TopIndexPage'
 }
 </script>
