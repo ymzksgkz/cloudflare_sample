@@ -1,35 +1,25 @@
 <template>
   <div>
-    <div id="title"></div>
-    <div id="body"></div>
+    <div id="title">{{ article.title }}</div>
+    <div id="body" v-html="article.content" />
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'Article',
-  data() {
-    return {
-      data: {}
-    }
-  }, async created() {
-    const params = this.$route.params
-    if (!params || !params.article_id) {
-      return
-    }
-    const { article_id } = params
-    const { data } = await axios.get(
+  async asyncData(ctx) {
+    const { params: { article_id } } = ctx
+    if (!article_id) return
+
+    const article = await ctx.$axios.$get(
         `https://cms-practice.microcms.io/api/v1/news/${article_id}`,
         {
           // TODO 環境変数にしたほうがよいけど一旦いい。
           headers: {'X-MICROCMS-API-KEY': 'a85dd8764e99460e92d2bdf73906732c1a56'}
         }
     )
-    this.data = data
-    document.getElementById('title').innerHTML = data.title
-    document.getElementById('body').innerHTML = data.content
+    return { article }
   }
 }
 </script>

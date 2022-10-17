@@ -10,23 +10,17 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'ArticleList',
-  data() {
-    return {
-      contents: {}
-    }
-  }, async created() {
-    const { data: { contents } } = await axios.get(
+  async asyncData(ctx) {
+    const { contents } = await ctx.$axios.$get(
         `https://cms-practice.microcms.io/api/v1/news`,
         {
           // TODO 環境変数にしたほうがよいけど一旦いい。
           headers: {'X-MICROCMS-API-KEY': 'a85dd8764e99460e92d2bdf73906732c1a56'}
         }
     )
-    this.contents = contents
+    return { contents }
   }
 }
 </script>
