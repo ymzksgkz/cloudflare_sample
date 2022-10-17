@@ -13,11 +13,11 @@ export default {
     }
   }, async created() {
     const query = this.$route.query
-    if (query.id === undefined || query.draftKey === undefined) {
+    if (query.id === undefined) {
       return
     }
-    const {data} = await axios.get(
-        `https://cms-practice.microcms.io/api/v1/news/01a90u2y8i`,
+    const { data } = await axios.get(
+        `https://cms-practice.microcms.io/api/v1/news/${query.id}`,
         {
           // TODO 環境変数にしたほうがよいけど一旦いい。
           headers: {'X-MICROCMS-API-KEY': 'a85dd8764e99460e92d2bdf73906732c1a56'}
