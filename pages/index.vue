@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <span>記事一覧</span>
 </template>
 
 <script>
