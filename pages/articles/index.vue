@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>記事一覧</span>
-    <div class="article" v-for="article in contents">
+    <div class="article" v-for="article in contents" :key="article.id">
       <NuxtLink :to="`/articles/${article.id}`" >
         <span>{{ article.title }}</span>
       </NuxtLink>
