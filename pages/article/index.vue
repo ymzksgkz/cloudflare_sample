@@ -16,18 +16,19 @@ export default {
     if (query.id === undefined || query.draftKey === undefined) {
       return
     }
-    const { data } = await axios.get(
+    const {data} = await axios.get(
         `https://cms-practice.microcms.io/api/v1/news/01a90u2y8i`,
         {
           // TODO 環境変数にしたほうがよいけど一旦いい。
-          headers: { 'X-MICROCMS-API-KEY': 'a85dd8764e99460e92d2bdf73906732c1a56' }
+          headers: {'X-MICROCMS-API-KEY': 'a85dd8764e99460e92d2bdf73906732c1a56'}
         }
     )
     this.data = data
     console.log(data)
     document.getElementById('title').innerHTML = data.title
     document.getElementById('body').innerHTML = data.content
-  },
+  }
+}
 </script>
 <style lang="css">
 body {
